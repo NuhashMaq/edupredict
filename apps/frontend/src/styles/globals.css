@@ -1,0 +1,154 @@
+@config "../../tailwind.config.ts";
+@import "tailwindcss";
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-space), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 20px;
+}
+
+:root {
+  /* EduPredict Academic Light Palette */
+  --edp-blue: #1441ce;
+  --edp-pink: #fadedd;
+  --edp-red: #eb615f;
+  --edp-orange: #ef7f60;
+  --edp-white: #ffffff;
+
+  --edp-bg: var(--edp-pink);
+  --edp-surface: var(--edp-white);
+  --edp-ink: #0f172a; /* slate-900 */
+  --edp-ink-muted: #475569; /* slate-600 */
+}
+
+/* Better keyboard focus in dark UI */
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--edp-blue) 88%, white 12%);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+@keyframes edp-blink-2s {
+  /* 2s total: 1s ON + 1s OFF, with soft fades */
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.edp-blink-2s {
+  animation: edp-blink-2s 2s infinite ease-in-out;
+}
+
+.edp-neon-logo {
+  /* Legacy logo class (kept for safety). Prefer the split `edu` + `predict` spans in `BrandLogo`. */
+  font-family: var(--font-logo), var(--font-space), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--edp-blue);
+  -webkit-text-fill-color: var(--edp-blue);
+  letter-spacing: 0.02em;
+  font-weight: 950;
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.75),
+    0 14px 44px rgba(20, 65, 206, 0.14);
+}
+
+@keyframes edp-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@supports (-webkit-background-clip: text) {
+  .edp-neon-logo {
+    /* Keep logo SOLID filled (not transparent) even in supporting browsers. */
+    background: none;
+    -webkit-background-clip: initial;
+    background-clip: initial;
+    color: var(--edp-blue);
+    -webkit-text-fill-color: var(--edp-blue);
+    -webkit-text-stroke: 0;
+    filter: drop-shadow(0 16px 46px rgba(20, 65, 206, 0.16));
+  }
+}
+
+.edp-welcome-glow {
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.8),
+    0 10px 32px rgba(20, 65, 206, 0.18),
+    0 18px 72px rgba(239, 127, 96, 0.14);
+}
+
+@keyframes edp-float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes edp-glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 16px 60px rgba(20, 65, 206, 0.14),
+      0 10px 36px rgba(239, 127, 96, 0.10),
+      0 10px 28px rgba(235, 97, 95, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 24px 90px rgba(20, 65, 206, 0.16),
+      0 18px 70px rgba(239, 127, 96, 0.12),
+      0 14px 52px rgba(235, 97, 95, 0.10);
+  }
+}
+
+.edp-float-soft {
+  animation: edp-float-soft 6.5s ease-in-out infinite, edp-glow-pulse 7.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes edp-lamp-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.06);
+  }
+}
+
+.edp-lamp-pulse {
+  animation: edp-lamp-pulse 6.5s ease-in-out infinite;
+}

@@ -1,0 +1,1 @@
+"""EduPredict backend application package."""
