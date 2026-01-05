@@ -10,7 +10,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   typedRoutes: true,
   allowedDevOrigins: ["127.0.0.1", "localhost", "10.29.165.8"],
+  // Cloudflare Pages static hosting: output to /out (no .next server/cache artifacts uploaded)
+  output: "export",
   images: {
+    // Static export does not support Next.js image optimization.
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "source.unsplash.com" },

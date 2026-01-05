@@ -9,9 +9,11 @@ This frontend is a **Next.js** app.
 3. Set these build settings:
    - **Root directory:** `apps/frontend`
    - **Build command:** `npm run build`
-   - **Output directory:** `.next`
+  - **Output directory:** `out`
 
 Cloudflare Pages will usually auto-detect Next.js.
+
+This project is configured for **static export** on Pages (`output: "export"`), which avoids uploading large `.next/cache` artifacts that can exceed Cloudflare Pages’ per-file size limit.
 
 ## Environment variables
 
